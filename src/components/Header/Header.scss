@@ -1,0 +1,70 @@
+.header {
+  height: 128px;
+  padding: 43px 0px;
+  //background: rgba(red, 0.5);
+  margin-bottom: 45px;
+  border-bottom: 1px solid rgba(70, 70, 70, 0.5);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__left {
+  display: flex;
+  .logo {
+    width: 40px;
+    margin-right: 16px;
+  }
+  .header__title {
+    .header__titleMain {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
+    .header__description {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}
+
+.header__right {
+  display: flex;
+
+  .header__basket {
+    margin-right: 30px;
+    padding: 5px;
+      .basket__link {
+        
+        .basket__svg{
+          margin-right: 10px;
+        }
+        .basket__title {
+          line-height: 18px;
+          color: black;
+        }
+      }
+      
+  }
+
+    .header__like {
+    margin-right: 30px;
+      .like__link{
+        display: inline-block;
+        padding: 5px;  
+      }
+  }
+
+  .profile__link {
+    display: inline-block;
+    padding: 5px;    
+  }
+
+}
+
+

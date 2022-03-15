@@ -1,0 +1,111 @@
+.sneakers {
+  position: relative;
+  width: 210px;
+  height: 240px;
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 40px;
+  box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition-duration: 0.5s;
+
+  &:hover {
+    transform: translate(0px, -5px);
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .sneakers__model {
+    width: 130px;
+    margin-bottom: 15px;
+  }
+
+  .sneakers__name {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    text-align: left;
+    padding: 0 30px;
+    margin-bottom: 15px;
+  }
+}
+
+.sneakers__choice {
+  width: 210px;
+  display: grid;
+  grid-template-columns: 30px 1fr 35px 30px;
+
+  .sneakers__price {
+    grid-column: 2/3;
+    .price {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      color: #000000;
+    }
+
+    & > span {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 13px;
+      text-transform: uppercase;
+      color: #bdbdbd;
+    }
+  }
+
+  .sneakers__add {
+    grid-column: 3/4;
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    border: 1px solid #f2f2f2;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(5, 122, 35, 0.7);
+      transition-duration: 0.5s;
+    }
+
+    .plus {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+.sneakers__like {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fef0f0;
+  box-sizing: border-box;
+  border-radius: 7px;
+
+  &:hover {
+    border-color:rgba(255, 2, 2, 0.3);
+    transition-duration: 0.5s;
+  }
+
+  img {
+    width: 17px;
+    margin: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+
+    &:hover {
+      width: 22px;
+      transition-duration: 0.5s;
+    }
+  }
+}

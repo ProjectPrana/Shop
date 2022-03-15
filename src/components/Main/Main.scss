@@ -1,0 +1,38 @@
+.main__bloсk {
+  height: 300px;
+  margin-bottom: 40px;
+  background: url(./Main.jpg) no-repeat; 
+  background-position: right;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 60px;
+
+    .mainTitle{ 
+      margin-bottom: 30px;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 38px;
+      color: #8BB43C;
+        >span{
+          color: black;
+        }
+    }
+    .mainButton{
+      width: 180px;
+      height: 50px;
+      background: #A5D364;
+      border-radius: 110px;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+}
