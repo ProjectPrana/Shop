@@ -8,6 +8,7 @@ function Sneakers(props) {
   /*-- Логика для Кнопки sneakers__add--*/
   const [isAdded, satIsAdd] = React.useState(false);
   const onClickPlus = () => {
+    props.new({ img: props.img, name: props.name, price: props.price });
     satIsAdd(!isAdded);
   };
   /*---------------------------------*/
@@ -35,7 +36,7 @@ function Sneakers(props) {
         <button className="sneakers__add" onClick={onClickPlus}>
           <img
             src={isAdded ? "/img/svg/add.svg" : "/img/svg/plus.svg"}
-            alt=""
+            alt="#"
             className="plus"
           />
         </button>

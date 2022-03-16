@@ -1,6 +1,6 @@
 import "./Header.scss";
 
-function Header() {
+function Header(props) {
   return (
     <header className="header">
       <div className="header__left">
@@ -12,7 +12,7 @@ function Header() {
       </div>
       <div className="header__right">
         <div className="header__basket basket">
-          <a href="" className="basket__link">
+          <a href="#" className="basket__link" onClick={props.clickBasket}>
             <img src="/img/svg/basket.svg" alt="" className="basket__svg" />
             <span className="basket__title"> 1200 грн. </span>
           </a>
