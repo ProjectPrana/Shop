@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./Basket.module.scss";
 import OnBasket from "./OnBasket/OnBasket";
 
-function Basket({closeBasket,items=[]}) {
+function Basket({closeBasket,itemsToBasket=[]}) {
 
-  const goods = items.map((obg) => (<OnBasket img={obg.img} name={obg.name} price={obg.price} />));
+  const goods = itemsToBasket.map((obg) => (
+    <OnBasket img={obg.img} name={obg.name} price={obg.price} />
+  ));
 
   return (
     <div className={styles.window}>

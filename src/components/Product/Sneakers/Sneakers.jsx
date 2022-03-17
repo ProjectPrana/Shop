@@ -1,5 +1,5 @@
 import React from "react";
-import "./Sneakers.scss";
+import styles from "./Sneakers.module.scss";
 
 
 
@@ -8,7 +8,7 @@ function Sneakers(props) {
   /*-- Логика для Кнопки sneakers__add--*/
   const [isAdded, satIsAdd] = React.useState(false);
   const onClickPlus = () => {
-    props.new({ img: props.img, name: props.name, price: props.price });
+    props.items({ img: props.img, name: props.name, price: props.price });
     satIsAdd(!isAdded);
   };
   /*---------------------------------*/
@@ -22,27 +22,27 @@ function Sneakers(props) {
   /*---------------------------------*/
 
   return (
-    <div className="sneakers">
-      <img src={props.img} alt="" className="sneakers__model" />
-      <h3 className="sneakers__name">{props.name}</h3>
-      <div className="sneakers__choice">
-        <div className="sneakers__price">
+    <div className={styles.sneakers}>
+      <img src={props.img} alt="" className={styles.sneakers__model} />
+      <h3 className={styles.sneakers__name}>{props.name}</h3>
+      <div className={styles.sneakers__choice}>
+        <div className={styles.sneakers__price}>
           <span> Цена </span>
-          <div className="price">
+          <div className={styles.price}>
             {props.price}
             <span> грн. </span>
           </div>
         </div>
-        <button className="sneakers__add" onClick={onClickPlus}>
+        <button className={styles.sneakers__add} onClick={onClickPlus}>
           <img
             src={isAdded ? "/img/svg/add.svg" : "/img/svg/plus.svg"}
             alt="#"
-            className="plus"
+            className={styles.plus}
           />
         </button>
       </div>
-      <div className="sneakers__like">
-        <img onClick={like} src={likeAdd} alt="" className="" />
+      <div className={styles.sneakers__like}>
+        <img onClick={like} src={likeAdd} alt="like" />
       </div>
     </div>
   );

@@ -1,0 +1,71 @@
+.product {
+  width:100%; 
+}
+
+.product__title{
+  display: flex;
+  justify-content: space-between;  
+  margin-bottom: 40px;
+
+  .product__h2{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000000;
+  }
+
+  .product__search{
+    display: flex;
+    width: 200px;
+    height: 35px;
+    border: 1px solid #575757;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+
+      .search__input{
+        width: 150px;
+        border-radius: 10px;
+      }
+      .search__svg {
+        width: 20px;
+        margin:0 10px ;
+      }
+
+      .search__close{
+      width: 30px;
+      height: 30px;
+      background: #FFFFFF;
+      border: 1px solid #F2F2F2;        
+      box-sizing: border-box;
+      border-radius: 8px;
+      transition-duration: 0.5s;
+      position: absolute;
+      right: 5px;
+      top:5px;
+      width: 20px;
+      height: 20px;
+
+      &:hover{
+        background:red;
+      }
+
+      >img{
+        width: 15px;
+        height: 15px;
+        transform: rotate(45deg);
+      }
+    }
+    }
+  
+}
+
+.allSneakers{  
+  display: grid;
+  grid-template: repeat(3,260px)/repeat(4,210px) ;
+  gap: 40px;
+  justify-items: center;  
+}
+
