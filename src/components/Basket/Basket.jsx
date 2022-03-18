@@ -1,12 +1,29 @@
+import axios from "axios";
 import React from "react";
 import styles from "./Basket.module.scss";
 import OnBasket from "./OnBasket/OnBasket";
 
-function Basket({closeBasket,itemsToBasket=[]}) {
+function Basket({ closeBasket, itemsToBasket = [], setCardItems }) {
 
+  /*-- Отрисовка карточек в корзину полученных с Backend --*/
   const goods = itemsToBasket.map((obg) => (
-    <OnBasket img={obg.img} name={obg.name} price={obg.price} />
+    <OnBasket
+      id={obg.id}
+      img={obg.img}
+      name={obg.name}
+      price={obg.price}
+      setCardItems={setCardItems}
+    />
   ));
+
+  React.useEffect(() => {
+    axios
+      .get("https://6231af9e05f5f4d40d80deb1.mockapi.io/Basket")
+      .then((res) => {
+        setCardItems(res.data);
+      });
+  }, []);
+  /*---------------------------------*/
 
   return (
     <div className={styles.window}>
@@ -17,9 +34,7 @@ function Basket({closeBasket,itemsToBasket=[]}) {
             <img src="/img/svg/plus.svg" alt="" className={styles.close} />
           </button>
         </div>
-        <div className={styles.basket__goods}>
-          {goods}
-        </div>
+        <div className={styles.basket__goods}>{goods}</div>
       </div>
     </div>
   );

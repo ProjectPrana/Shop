@@ -9,7 +9,7 @@ import Basket from "./components/Basket/Basket";
 function App() {
   /*-- Логика для добавления карточки товара в карзину--*/
   const [cardItems, setCardItems] = React.useState([ ]);  
-  const items = ((obg) => { setCardItems([...cardItems, obg]) });
+  const items = ((obg) => { setCardItems([...cardItems, obg]); });
   /*---------------------------------*/
 
   /*-- Логика для открытия корзины -*/
@@ -19,10 +19,22 @@ function App() {
   return (
     <div className="wrapper">
       <div className="container">
-        {openBasket ? (<Basket itemsToBasket={cardItems} closeBasket={() => {satBasket(false)}}/>): null}
-        <Header clickBasket={() => {satBasket(true);}}/>
+        {openBasket ? (
+          <Basket
+            itemsToBasket={cardItems}
+            setCardItems={setCardItems}
+            closeBasket={() => {
+              satBasket(false);
+            }}
+          />
+        ) : null}
+        <Header
+          clickBasket={() => {
+            satBasket(true);
+          }}
+        />
         <Main />
-        <Product items={items}/>
+        <Product items={items} />
       </div>
     </div>
   );

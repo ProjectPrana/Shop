@@ -1,13 +1,16 @@
+import axios from "axios";
 import React from "react";
 import styles from "./Sneakers.module.scss";
-
-
-
 
 function Sneakers(props) {
   /*-- Логика для Кнопки sneakers__add--*/
   const [isAdded, satIsAdd] = React.useState(false);
   const onClickPlus = () => {
+    axios.post("https://6231af9e05f5f4d40d80deb1.mockapi.io/Basket", {
+      img: props.img,
+      name: props.name,
+      price: props.price,
+    });
     props.items({ img: props.img, name: props.name, price: props.price });
     satIsAdd(!isAdded);
   };

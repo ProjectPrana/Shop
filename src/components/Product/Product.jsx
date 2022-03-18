@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import styles from "./Product.module.scss";
 
@@ -8,14 +9,10 @@ function Product(props) {
 
   /*-- Логика для рендера карточек приходящих с Backend--*/
   const [goods, setGoods] = React.useState([]);
-  React.useEffect(() => {
-    fetch("https://6231af9e05f5f4d40d80deb1.mockapi.io/goods")
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setGoods(json);
-      });
+  React.useEffect(() => {  
+    axios.get("https://6231af9e05f5f4d40d80deb1.mockapi.io/goods").then((res) => {
+      setGoods(res.data);
+    });
   }, []);
 
   /*---------------------------------*/
@@ -27,6 +24,16 @@ function Product(props) {
     setsearchValue(event.target.value);
   };
   /*---------------------------------*/
+
+  const sneakers = goods.filter((obg) => obg.name.toLowerCase().includes(searchValue.toLowerCase())).map((obg, index) => (
+      <Sneakers
+        key={index}
+        items={items}
+        img={obg.img}
+        name={obg.name}
+        price={obg.price}
+      />
+    ));
 
   return (
     <div className={styles.product}>
@@ -55,21 +62,7 @@ function Product(props) {
           ) : null}
         </div>
       </div>
-      <main className={styles.allSneakers}>
-        {goods
-          .filter((obg) =>
-            obg.name.toLowerCase().includes(searchValue.toLowerCase())
-          )
-          .map((obg, index) => (
-            <Sneakers
-              key={index}
-              items={items}
-              img={obg.img}
-              name={obg.name}
-              price={obg.price}
-            />
-          ))}
-      </main>
+      <main className={styles.allSneakers}>{sneakers}</main>
     </div>
   );
 }
