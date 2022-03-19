@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import "./scss/Wrapper.scss";
 
 import Header from "./components/Header/Header";
@@ -27,7 +28,7 @@ function App() {
               satBasket(false);
             }}
           />
-        ) : null}
+        ) : null}        
         <Header
           clickBasket={() => {
             satBasket(true);

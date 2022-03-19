@@ -17,9 +17,17 @@ function Sneakers(props) {
   /*---------------------------------*/
 
   /*-- Логика для Кнопки sneakers__like--*/
+
+  /*-- Визуально --*/
   const [isLike, setIsLike] = React.useState(false);
   const like = () => {
     setIsLike(!isLike);
+    /*-- Сервер --*/
+    axios.post("https://6231af9e05f5f4d40d80deb1.mockapi.io/like", {
+      img: props.img,
+      name: props.name,
+      price: props.price,
+    });
   };
   let likeAdd = isLike ? "/img/svg/heart.svg" : "/img/svg/like.svg";
   /*---------------------------------*/
