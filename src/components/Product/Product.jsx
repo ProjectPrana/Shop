@@ -9,10 +9,12 @@ function Product(props) {
 
   /*-- Логика для рендера карточек приходящих с Backend--*/
   const [goods, setGoods] = React.useState([]);
-  React.useEffect(() => {  
-    axios.get("https://6231af9e05f5f4d40d80deb1.mockapi.io/goods").then((res) => {
-      setGoods(res.data);
-    });
+  React.useEffect(() => {
+    axios
+      .get("https://6231af9e05f5f4d40d80deb1.mockapi.io/goods")
+      .then((res) => {
+        setGoods(res.data);
+      });
   }, []);
 
   /*---------------------------------*/
@@ -25,8 +27,12 @@ function Product(props) {
   };
   /*---------------------------------*/
 
-  const sneakers = goods.filter((obg) => obg.name.toLowerCase().includes(searchValue.toLowerCase())).map((obg, index) => (
+  /*-- Переменная которая возращает компонент с Props--*/
+  const sneakers = goods
+    .filter((obg) => obg.name.toLowerCase().includes(searchValue.toLowerCase()))
+    .map((obg, index) => (
       <Sneakers
+        cardData = {obg}
         key={index}
         items={items}
         img={obg.img}
@@ -34,6 +40,8 @@ function Product(props) {
         price={obg.price}
       />
     ));
+
+  /*---------------------------------*/
 
   return (
     <div className={styles.product}>
@@ -62,7 +70,7 @@ function Product(props) {
           ) : null}
         </div>
       </div>
-      <main className={styles.allSneakers}>{sneakers}</main>
+      <main className={styles.allSneakers}> {sneakers} </main>
     </div>
   );
 }

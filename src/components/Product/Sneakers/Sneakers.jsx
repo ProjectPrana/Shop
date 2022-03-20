@@ -3,6 +3,27 @@ import React from "react";
 import styles from "./Sneakers.module.scss";
 
 function Sneakers(props) {
+  /*-- Логика для Кнопки sneakers__like--*/
+  const { favorite } = props;
+  const cardData = props.cardData;
+  const [addLike, satAddLike] = React.useState([]);
+
+  const onAddLike = (cardData) => {
+    axios.post("https://6231af9e05f5f4d40d80deb1.mockapi.io/like", cardData);
+    satAddLike([...addLike, cardData]);
+  };  
+
+  /*-- Визуально --*/
+  const [isLike, setIsLike] = React.useState(favorite);
+  const like = () => {
+    setIsLike(!isLike);
+    /*-- Сервер --*/    
+    onAddLike(cardData);
+  };
+  let likeAdd = isLike ? "/img/svg/heart.svg" : "/img/svg/like.svg";
+  /*---------------------------------*/
+
+
   /*-- Логика для Кнопки sneakers__add--*/
   const [isAdded, satIsAdd] = React.useState(false);
   const onClickPlus = () => {
@@ -14,22 +35,6 @@ function Sneakers(props) {
     props.items({ img: props.img, name: props.name, price: props.price });
     satIsAdd(!isAdded);
   };
-  /*---------------------------------*/
-
-  /*-- Логика для Кнопки sneakers__like--*/
-
-  /*-- Визуально --*/
-  const [isLike, setIsLike] = React.useState(false);
-  const like = () => {
-    setIsLike(!isLike);
-    /*-- Сервер --*/
-    axios.post("https://6231af9e05f5f4d40d80deb1.mockapi.io/like", {
-      img: props.img,
-      name: props.name,
-      price: props.price,
-    });
-  };
-  let likeAdd = isLike ? "/img/svg/heart.svg" : "/img/svg/like.svg";
   /*---------------------------------*/
 
   return (

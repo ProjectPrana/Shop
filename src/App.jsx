@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Product from "./components/Product/Product";
 import Basket from "./components/Basket/Basket";
+import Favorite from "./components/Favorite/Favorite";
 
 function App() {
   /*-- Логика для добавления карточки товара в карзину--*/
@@ -28,14 +29,17 @@ function App() {
               satBasket(false);
             }}
           />
-        ) : null}        
+        ) : null}
         <Header
           clickBasket={() => {
             satBasket(true);
           }}
         />
         <Main />
-        <Product items={items} />
+        <Routes>
+          <Route path="/" element={<Product items={items} />} />
+          <Route path="/like" element={<Favorite items={items} />} />
+        </Routes>
       </div>
     </div>
   );
