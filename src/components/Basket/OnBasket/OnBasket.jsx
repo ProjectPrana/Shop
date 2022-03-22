@@ -3,7 +3,8 @@ import styles from "./OnBasket.module.scss";
 
 function OnBasket(props) {
   /*-- Удаление карточки из корзины в React и с Backend --*/
-  const deletCard = (id) => {
+  const deleteCard = (id) => {
+    console.log(props.id);
     axios.delete(`https://6231af9e05f5f4d40d80deb1.mockapi.io/Basket/${id}`);
     props.setCardItems((prev) => prev.filter((item) => item.id !== id));
   };
@@ -22,7 +23,7 @@ function OnBasket(props) {
       </div>
       <button
         className={styles.sneakers__add}
-        onClick={() => deletCard(props.id)}
+        onClick={() => deleteCard(props.id)}
       >
         <img src="/img/svg/plus.svg" alt="" className={styles.plus} />
       </button>

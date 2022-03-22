@@ -10,12 +10,14 @@ import Favorite from "./components/Favorite/Favorite";
 
 function App() {
   /*-- Логика для добавления карточки товара в карзину--*/
-  const [cardItems, setCardItems] = React.useState([ ]);  
-  const items = ((obg) => { setCardItems([...cardItems, obg]); });
+  const [cardItems, setCardItems] = React.useState([]);
+  const items = (obg) => {
+    setCardItems([...cardItems, obg]);
+  };
   /*---------------------------------*/
 
   /*-- Логика для открытия корзины -*/
-  const [openBasket, satBasket] = React.useState(false);  
+  const [openBasket, satBasket] = React.useState(false);
   /*---------------------------------*/
 
   return (
@@ -35,9 +37,16 @@ function App() {
             satBasket(true);
           }}
         />
-        <Main />
+
         <Routes>
-          <Route path="/" element={<Product items={items} />} />
+          <Route
+            path="/"
+            element={
+              <Main>
+                <Product items={items} />{" "}
+              </Main>
+            }
+          />
           <Route path="/like" element={<Favorite items={items} />} />
         </Routes>
       </div>

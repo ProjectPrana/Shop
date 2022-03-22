@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { addToBasket } from "../../../Actions/basket";
 import styles from "./Sneakers.module.scss";
 
 function Sneakers(props) {
@@ -11,7 +12,7 @@ function Sneakers(props) {
   const onAddLike = (cardData) => {
     axios.post("https://6231af9e05f5f4d40d80deb1.mockapi.io/like", cardData);
     satAddLike([...addLike, cardData]);
-  };  
+  };    
 
   /*-- Визуально --*/
   const [isLike, setIsLike] = React.useState(favorite);
@@ -27,13 +28,13 @@ function Sneakers(props) {
   /*-- Логика для Кнопки sneakers__add--*/
   const [isAdded, satIsAdd] = React.useState(false);
   const onClickPlus = () => {
-    axios.post("https://6231af9e05f5f4d40d80deb1.mockapi.io/Basket", {
-      img: props.img,
-      name: props.name,
-      price: props.price,
-    });
-    props.items({ img: props.img, name: props.name, price: props.price });
-    satIsAdd(!isAdded);
+    addToBasket(
+      { img: props.img, name: props.name, price: props.price },
+      () => {
+        props.items({ img: props.img, name: props.name, price: props.price });
+        satIsAdd(!isAdded);
+      }
+    );    
   };
   /*---------------------------------*/
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import styles from "./Favorite.module.scss";
 import Sneakers from "../Product/Sneakers/Sneakers";
+import { addLike } from "../../Actions/products";
 
 
 function Favorite(props) {
@@ -12,19 +13,16 @@ function Favorite(props) {
   /*-- Логика для рендера карточек "Like" приходящих с Backend--*/
   const [goods, setGoods] = React.useState([]);
   React.useEffect(() => {
-    axios
-      .get("https://6231af9e05f5f4d40d80deb1.mockapi.io/like")
-      .then((res) => {
-        setGoods(res.data);
-      });
+    addLike(setGoods);
   }, []);
 
   /*---------------------------------*/
 
   /*-- Переменная которая возращает компонент с Props--*/
-  const sneakers = goods.map((obg, index) => (
+  const sneakers = goods.map((obg) => (
     <Sneakers
-      key={index}
+      key={`sneakers-${obg.id}`}
+      id={obg.id}
       items={items}
       img={obg.img}
       name={obg.name}

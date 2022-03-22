@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { fetchAllProducts } from "../../Actions/products";
 import styles from "./Product.module.scss";
 
 import Sneakers from "./Sneakers/Sneakers";
@@ -10,11 +11,7 @@ function Product(props) {
   /*-- Логика для рендера карточек приходящих с Backend--*/
   const [goods, setGoods] = React.useState([]);
   React.useEffect(() => {
-    axios
-      .get("https://6231af9e05f5f4d40d80deb1.mockapi.io/goods")
-      .then((res) => {
-        setGoods(res.data);
-      });
+    fetchAllProducts(setGoods);
   }, []);
 
   /*---------------------------------*/

@@ -6,7 +6,7 @@ import OnBasket from "./OnBasket/OnBasket";
 function Basket({ closeBasket, itemsToBasket = [], setCardItems }) {
 
   /*-- Отрисовка карточек в корзину полученных с Backend --*/
-  const goods = itemsToBasket.map((obg) => (
+  const goodsOnBasket = itemsToBasket.map((obg) => (
     <OnBasket
       id={obg.id}
       img={obg.img}
@@ -34,7 +34,7 @@ function Basket({ closeBasket, itemsToBasket = [], setCardItems }) {
             <img src="/img/svg/plus.svg" alt="" className={styles.close} />
           </button>
         </div>
-        <div className={styles.basket__goods}>{goods}</div>
+        <div className={styles.basket__goods}>{goodsOnBasket}</div>
       </div>
     </div>
   );
